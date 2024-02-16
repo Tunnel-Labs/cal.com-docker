@@ -59,22 +59,13 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
           # Log out from the Docker registry at the end of a job
           logout: true # optional, default is true
-
-      - name: Log in to the Github Container registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: |
-            docker.io/calendso/calendso
-            docker.io/calcom/cal.com
-            ghcr.io/calcom/cal.com
+            docker.io/tunnel-labs/tunnel-cal.com
           # Add flavor latest only on full releases, not on pre-releases
           flavor: |
             latest=${{ !github.event.release.prerelease }}
