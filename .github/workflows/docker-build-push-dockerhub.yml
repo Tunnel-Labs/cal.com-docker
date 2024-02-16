@@ -65,7 +65,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            docker.io/tunnel-labs/tunnel-cal.com
+            docker.io/tunnellabs/tunnel-cal.com
           # Add flavor latest only on full releases, not on pre-releases
           flavor: |
             latest=${{ !github.event.release.prerelease }}
