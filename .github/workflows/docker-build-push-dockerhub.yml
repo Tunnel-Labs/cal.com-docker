@@ -37,6 +37,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Free Disk Space
+        uses: jlumbroso/free-disk-space@main
+      - uses: actions/checkout@v4
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it, uncomment below
       # - name: Checkout code at specified version
       #   uses: actions/checkout@v2
