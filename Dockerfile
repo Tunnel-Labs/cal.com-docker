@@ -17,8 +17,7 @@ ENV NEXT_PUBLIC_WEBAPP_URL=http://NEXT_PUBLIC_WEBAPP_URL_PLACEHOLDER \
     DATABASE_DIRECT_URL=$DATABASE_URL \
     NEXTAUTH_SECRET=${NEXTAUTH_SECRET} \
     CALENDSO_ENCRYPTION_KEY=${CALENDSO_ENCRYPTION_KEY} \
-    NODE_OPTIONS=--max-old-space-size=${MAX_OLD_SPACE_SIZE} \
-    RAILWAY_GIT_BRANCH=$RAILWAY_GIT_BRANCH
+    NODE_OPTIONS=--max-old-space-size=${MAX_OLD_SPACE_SIZE}
 
 COPY calcom/package.json calcom/yarn.lock calcom/.yarnrc.yml calcom/playwright.config.ts calcom/turbo.json calcom/git-init.sh calcom/git-setup.sh ./
 COPY calcom/.yarn ./.yarn
@@ -67,7 +66,8 @@ WORKDIR /calcom
 COPY --from=builder-two /calcom ./
 ARG NEXT_PUBLIC_WEBAPP_URL=http://localhost:3000
 ENV NEXT_PUBLIC_WEBAPP_URL=$NEXT_PUBLIC_WEBAPP_URL \
-    BUILT_NEXT_PUBLIC_WEBAPP_URL=$NEXT_PUBLIC_WEBAPP_URL
+    BUILT_NEXT_PUBLIC_WEBAPP_URL=$NEXT_PUBLIC_WEBAPP_URL \
+    RAILWAY_GIT_BRANCH=$RAILWAY_GIT_BRANCH
 
 ENV NODE_ENV production
 EXPOSE 3000
