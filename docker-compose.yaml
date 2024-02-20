@@ -33,6 +33,7 @@ services:
         CALENDSO_ENCRYPTION_KEY: ${CALENDSO_ENCRYPTION_KEY}
         DATABASE_URL: ${DATABASE_URL}
         DATABASE_DIRECT_URL: ${DATABASE_URL}
+        GIT_BRANCH: ${GIT_BRANCH}
       network: stack
     restart: always
     networks:
@@ -43,7 +44,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}/${POSTGRES_DB}
       - DATABASE_DIRECT_URL=${DATABASE_URL}
-      - RAILWAY_GIT_BRANCH=${RAILWAY_GIT_BRANCH}
+      - GIT_BRANCH=${GIT_BRANCH}
     depends_on:
       - database
 
